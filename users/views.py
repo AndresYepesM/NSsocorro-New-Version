@@ -18,24 +18,28 @@ from .forms import RegistroForm, ProfileUpdate
 
 # Admin Home Page
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login')
+# Admin Page 
 def admin_home(request):
 	return render(request, 'administration/admin_home.html')
 
 
 
 @login_required(login_url='/login/')
+# msj cretae user success
 def msj_success(request):
 	return render(request, 'registration/new_user_success.html')
 
 
 @login_required(login_url='/login/')
+# msj update user profile success
 def profile_success(request):
 	return render(request, 'administration/profile_success.html')
 
 
 
 @login_required(login_url='/login/')
+# sing up view
 def signup(request):
 	if request.method == 'POST':
 		form = RegistroForm(request.POST)
@@ -48,6 +52,8 @@ def signup(request):
 		'form': form
 		})
 
+
+# Update profile view
 class UserEditView(generic.UpdateView):
 	form_class = ProfileUpdate
 	template_name = 'administration/profile_edit.html'
