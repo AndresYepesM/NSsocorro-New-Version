@@ -2,12 +2,11 @@ from django import forms
 from .models import Article
 
 class DateInput(forms.DateInput):
-	input_type = 'date'
+	input_type='date'
 
 
-class ArticleCreate(forms.ModelForm):
+class NewArticle(forms.ModelForm):
     class Meta:
-        model = Article
-        fields = ['title', 'body', 'publication']
-
-        widgets = {'publication': DateInput()}
+        model=Article
+        widgets={'publication': DateInput()}
+        fields=['title','publication', 'body']
