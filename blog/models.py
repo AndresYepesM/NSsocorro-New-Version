@@ -7,7 +7,7 @@ class Article(models.Model):
 
 	title = models.CharField(max_length= 35, verbose_name='Title')
 	body = models.TextField(verbose_name = 'Body Article')
-	date = models.DateField(blank = False, verbose_name = 'publication date')
+	publication = models.DateField(verbose_name='publication')
 	class Mate:
 		ordering = ["-id"]
 		verbose_name_plural = "Articles"
