@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -6,7 +7,7 @@ from django.db import models
 class Article(models.Model):
 
 	title = models.CharField(max_length=35, verbose_name='Title')
-	body = models.TextField(verbose_name='Body Article')
+	body = RichTextField(config_name='default')
 	publication = models.DateField(blank=False, verbose_name='publication')
 	class Mate:
 		ordering = ["id"]
