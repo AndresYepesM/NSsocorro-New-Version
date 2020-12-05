@@ -19,3 +19,9 @@ class Article(ListView):
 	model = Article
 	template_name = 'readers/article.html'
 	paginate_by = 4
+
+
+class Activities(ListView):
+	model = Activity
+	template_name = 'readers/activities.html'
+	paginate_by = 4
