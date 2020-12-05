@@ -24,7 +24,7 @@ class ArticleList(ListView):
 	model = Article
 	template_name = 'blog/article/article_list.html'
 	paginate_by = 4
-
+	
 class ArticleCreate(CreateView):
 	model = Article
 	form_class = NewArticle

@@ -10,7 +10,7 @@ class Article(models.Model):
 	body = RichTextField(config_name='default')
 	publication = models.DateField(blank=False, verbose_name='publication')
 	class Meta:
-		ordering = ["id"]
+		ordering = ["-id"]
 		verbose_name_plural = "Articles"
 	def __str__(self):
 		return str(self.title)
