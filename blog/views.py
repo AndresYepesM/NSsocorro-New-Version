@@ -7,10 +7,13 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Article
-from .forms import NewArticle
+from .models import Article, Activity
+from .forms import NewArticle, NewActivities
 
 # Create your views here.
+
+
+########################################### Article's Views ################################################################
 
 @login_required(login_url='/login')
 # Msj the artiicle created with success.
@@ -41,3 +44,36 @@ def ArticleDelete(request, pk):
 	post = get_object_or_404(Article, id=pk)
 	post.delete()
 	return redirect('article')
+
+########################################### Activity's Views ################################################################
+
+class ActivitiesList(ListView):
+	model = Activity
+	template_name = 'blog/activities/activities_list.html'
+	paginate_by = 4
+
+
+@login_required(login_url='/login')
+# Msj the artiicle created with success.
+def msj_activities(request):
+	return render(request, 'blog/activities/msj_activities.html')
+
+
+class ActivitiesCreate(CreateView):
+	model = Activity
+	form_class = NewActivities
+	template_name = 'blog/activities/activities_form.html'
+	success_url = reverse_lazy('msj_activities')
+
+class ActivitiesUpdate(UpdateView):
+	model = Activity
+	form_class = NewActivities
+	template_name = 'blog/activities/activities_form_upgrade.html'
+	success_url = reverse_lazy('msj_activities')
+
+@login_required(login_url='/login')
+def ActivitiesDelete(request, pk):
+
+	post = get_object_or_404(Activity, id=pk)
+	post.delete()
+	return redirect('activities')
