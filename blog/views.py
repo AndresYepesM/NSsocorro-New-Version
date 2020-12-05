@@ -34,10 +34,6 @@ class ArticleUpdate(UpdateView):
 	template_name='blog/article/article_form_update.html'
 	success_url=reverse_lazy('msj_article')
 
-#class ArticleDelete(DeleteView):
-#	model=Article
-#	template_name='blog/article/article_list.html'
-#	success_url=reverse_lazy('article')
 
 @login_required(login_url='/login')
 def ArticleDelete(request, pk):

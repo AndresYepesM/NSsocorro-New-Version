@@ -63,7 +63,6 @@
 
 						  	<div class="card-body">
 						    	<h5 class="card-title">{{ article.publication }}</h5>
-						    	<p class="card-text">{{ article.body|safe }}</p>
 
 						    	{% if user.is_staff and user.is_authenticated %}
 						    		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">

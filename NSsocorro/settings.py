@@ -25,7 +25,7 @@ SECRET_KEY = 'nig5q!xw^gdqk_1updoz+@59jt!tdz+sqhfe6!sq)(@_&0it%('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['192.168.1.72']
 
 
@@ -197,8 +197,8 @@ CKEDITOR_CONFIGS = {
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': 291,
-        # 'width': '100%',
+         'height': 'auto',
+         'width': '100%',
         # 'filebrowserWindowHeight': 725,
         # 'filebrowserWindowWidth': 940,
         # 'toolbarCanCollapse': True,
