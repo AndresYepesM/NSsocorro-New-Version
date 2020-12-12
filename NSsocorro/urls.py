@@ -10,6 +10,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     re_path('administration/', include('users.urls')),
     re_path('administration/blog/', include('blog.urls')),
+    re_path('administration/community/', include('community.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', views.home, name='home'),
 

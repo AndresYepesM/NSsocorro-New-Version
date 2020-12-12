@@ -21,6 +21,16 @@
 				          <a class="dropdown-item" href="{% url 'activities' %}">Activities</a>
 				        </div>
 		      		</li>
+
+		      		<li class="nav-item dropdown">
+			        	<a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         		Community
+			        	</a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" href="{% url 'members' %}">Community Members</a>
+				          <!--div class="dropdown-divider"></div-->
+				        </div>
+		      		</li>
 			    </ul>
 			    	{% if user.is_authenticated %}
 						<ul class="navbar-nav">

@@ -11,18 +11,19 @@
 
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			    <ul class="navbar-nav mr-auto">
-			    	<li class="nav-item dropdown">
+			    	 <li class="nav-item dropdown">
 			        	<a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			         		Community
+			         		Blogs
 			        	</a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="{% url 'members' %}">Community Members</a>
-				          <!--div class="dropdown-divider"></div-->
+				          <a class="dropdown-item" href="{% url 'article' %}">Articles</a>
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" href="{% url 'activities' %}">Activities</a>
 				        </div>
 		      		</li>
 
 		     	    <li class="nav-item active">
-					  	<a class="nav-link text-light" href=" {% url 'create_activities' %}"> Create activities</a>
+					  	<a class="nav-link text-light" href="#"> Add new Member</a>
 					</li>
 			    </ul>
 			    	{% if user.is_authenticated %}
@@ -61,14 +62,14 @@
 	  	</div>
 	</nav>
 
-	<div class="container mt-4">
-		<div class="row justify-content-center">
-			<div class="col col-md-12 col-lg-6" >
-				{% if object_list  %}
-					{% for activities in object_list %}
-						<div class="card">
+<div class="container mt-4">
+	<div class="row justify-content-center">
+		<div class="col-4">
+			{% if object_list  %}
+					{% for members in object_list %}
+						<div class="card"style="width: 20rem;">
 							<div class="card-header">	
-								Activities from {{ activities.st_date }} until {{ activities.ed_date }} 
+								{{ members.name }}
 							</div>
 
 						  	<div class="card-body">
@@ -82,17 +83,17 @@
 									  <div class="modal-dialog">
 									    <div class="modal-content">
 									      <div class="modal-header">
-									        <h5 class="modal-title" id="exampleModalLabel">you really want to delete this activities?</h5>
+									        <h5 class="modal-title" id="exampleModalLabel">you really want to delete a {{ members.name }} ?</h5>
 									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									          <span aria-hidden="true">&times;</span>
 									        </button>
 									      </div>
 									      <div class="modal-body">  
-										  		If you delete this activities, no one will be able to read it anymore, sure you want to continue?
+										  		If you delete a {{ members.name }}, no one will be able to read it anymore, sure you want to continue?
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									        <a href="{% url 'delete_activities' pk=activities.id %}" class="btn btn-danger">Yes, delete</a>
+									        <a href="#" class="btn btn-danger">Yes, delete</a>
 									      </div>
 									    </div>
 									  </div>
@@ -100,7 +101,7 @@
 						    	{% endif %}
 
 						    	{% if user.is_authenticated %}
-						    		<a href="{% url 'update_activities' pk=activities.id %}" class="btn btn-info">Edit activities</a>
+						    		<a href="#" class="btn btn-info">Edit Members</a>
 						    	{% endif %}
 							</div>
 						</div>
@@ -108,7 +109,7 @@
 					{% endfor %}
 				{% else %}
 					<div class="alert alert-danger" role="alert">
-						<h4 class="alert-heading">The blog don't have any activities posted.</h4>
+						<h4 class="alert-heading">The blog don't have any Members posted.</h4>
 						<p>you can go to create a new activities on the navbar.</p>
 					</div>
 				{% endif %}
@@ -124,7 +125,7 @@
 				    {% endif %}
 				  </ul>
 				</nav>
-			</div>
 		</div>
 	</div>
+</div>
 {% endblock %}
