@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
 {% block content %}
 
@@ -62,13 +62,30 @@
 	  	</div>
 	</nav>
 
-<div class="container mt-4">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<h5 class="card-header">Search by name here.</h5>
+				<div class="card-body">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Members's name" aria-label="Members's name" aria-describedby="button-addon2">
+			  			<div class="input-group-append">
+			    			<button class="btn btn-outline-success" type="button" id="button-addon2">Search</button>
+			 	 		</div>
+					</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<br>
 	<div class="row justify-content-center">
-		<div class="col-4">
+		<div class="col col-md-12">
 			{% if object_list  %}
-					{% for members in object_list %}
-						<div class="card"style="width: 20rem;">
-							<div class="card-header">	
+					<div class="card-columns">
+						{% for members in object_list %}
+							<div class="card">
+								<div class="card-header">	
 								{{ members.name }}
 							</div>
 
@@ -77,42 +94,21 @@
 						    		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 										Delete activities
 									</button>
-
-									<!-- Modal -->
-									<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									  <div class="modal-dialog">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <h5 class="modal-title" id="exampleModalLabel">you really want to delete a {{ members.name }} ?</h5>
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									          <span aria-hidden="true">&times;</span>
-									        </button>
-									      </div>
-									      <div class="modal-body">  
-										  		If you delete a {{ members.name }}, no one will be able to read it anymore, sure you want to continue?
-									      </div>
-									      <div class="modal-footer">
-									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									        <a href="#" class="btn btn-danger">Yes, delete</a>
-									      </div>
-									    </div>
-									  </div>
-									</div>
 						    	{% endif %}
 
 						    	{% if user.is_authenticated %}
 						    		<a href="#" class="btn btn-info">Edit Members</a>
 						    	{% endif %}
 							</div>
-						</div>
-						<br>
-					{% endfor %}
+							</div>
+						{% endfor %}
+					</div>
 				{% else %}
 					<div class="alert alert-danger" role="alert">
 						<h4 class="alert-heading">The blog don't have any Members posted.</h4>
 						<p>you can go to create a new activities on the navbar.</p>
 					</div>
-				{% endif %}
+			{% endif %}
 
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">

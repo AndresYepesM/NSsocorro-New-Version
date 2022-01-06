@@ -7,7 +7,7 @@ class MembersProfile(models.Model):
 
 	name = models.CharField(max_length=60, verbose_name='Name and last name')
 	bio = models.TextField()
-	img = models.ImageField(upload_to='static/img/upload/members')
+	img = models.ImageField(upload_to='static/img/upload/members', blank=True)
 	class Meta:
 		ordering = ["-id"]
 		verbose_name_plural = "Members Profile"
