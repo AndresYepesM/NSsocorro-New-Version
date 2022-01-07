@@ -110,8 +110,8 @@
 				{% else %}
 
 					<div class="alert alert-danger" role="alert">
-						<h4 class="alert-heading">The blog don't have any Members posted.</h4>
-						<p>you can go to create a new activities on the navbar.</p><a href="{% url 'members' %}">back.</a>
+						<h4 class="alert-heading">The blog don't have any Members posted with this name</h4>
+						<a href="#" class="btn btn-secondary" onClick="javascript:window.close('','_parent','');">Close</a>
 					</div>
 				{% endif %}
 			{% else %}
