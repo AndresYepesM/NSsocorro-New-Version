@@ -30,3 +30,13 @@ position: relative; padding-bottom: 75%; height: 0; overflow: hidden;
 position: absolute; top:0; left: 0; width: 100%; height: 100%;
  
 }
+
+
+.circulo {
+  margin-left: 72px;
+  width: 160px;
+  height: 160px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}

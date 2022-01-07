@@ -69,66 +69,62 @@
 	<br>
 
 	<div class="row justify-content-center">
-		<div class="col col-md-12">
-			{% if object_list  %}
-				<div class="card-columns">
-					{% for members in object_list %}
-						<div class="card">
-							<div class="card-header">	
-								{{ members.name }}
+		{% if searched %}
+			<div class="col col-md-6  mt-2">
+				{% if members  %}
+						{% for member in members%}
+							<div class="card mt-2">
+								<div class="card-header">	
+									{{ member.name }}
+								</div>
+
+								<div class="card-body">
+							  		<div class="row">
+							  			<div class="col col-md-12">
+							  				{% if member.photo.url != True %}
+							  							
+							  					<img src="{{member.photo.url}}" width="200" height="200" class="img-thumbnail circulo">
+
+							  				{% else %}
+
+							  					<img src="/static/img/default.png" class="img-thumbnail circulo">
+							  				{% endif %}
+							  			</div>
+
+
+							  			<div class="col col-md-12">
+							  				{% if user.is_staff and user.is_authenticated %}
+							    				<button type="button" class="btn btn-danger btn-lg btn-block"  data-toggle="modal" data-target="#exampleModal">
+													Delete Member
+												</button>
+							    			{% endif %}
+							    			<br>
+							    			{% if user.is_authenticated %}
+							    				<a href="#" class="btn btn-info btn-lg btn-block" >Edit Members</a>
+							    			{% endif %}
+							  			</div>
+							  		</div>	
+								</div>
 							</div>
+						{% endfor %}
+				{% else %}
 
-							<div class="card-body">
-							  	<div class="row">
-							  		<div class="col col-md-6">
-							  			{% if members.photo.url != True %}
-							  						
-							  				<img src="{{members.photo.url}}" width="200" height="200" class="img-thumbnail circulo">
-
-							  			{% else %}
-
-							  				<img src="/static/img/default.png" class="img-thumbnail circulo">
-							  			{% endif %}
-							  		</div>
-
-
-							  		<div class="col col-md-6">
-							  			{% if user.is_staff and user.is_authenticated %}
-							    			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-												Delete Member
-											</button>
-							    		{% endif %}
-
-							    		{% if user.is_authenticated %}
-							    			<a href="#" class="btn btn-info">Edit Members</a>
-							    		{% endif %}
-							  		</div>
-							  	</div>	
-							</div>
-						</div>
-
-					{% endfor %}
-				</div>
+					<div class="alert alert-danger" role="alert">
+						<h4 class="alert-heading">The blog don't have any Members posted.</h4>
+						<p>you can go to create a new activities on the navbar.</p><a href="{% url 'members' %}">back.</a>
+					</div>
+				{% endif %}
 			{% else %}
 
-				<div class="alert alert-danger" role="alert">
-					<h4 class="alert-heading">The blog don't have any Members posted.</h4>
-					<p>you can go to create a new activities on the navbar.</p>
+				<div class="card shadow-lg p-3 mb-5 bg-white rounded">
+					<div class="alert alert-danger" role="alert">
+						<h3>
+							There is not a member with that name. <a href="{% url 'members' %}">back.</a>
+						</h3>
+					</div>
 				</div>
+
 			{% endif %}
-
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					{% if page_obj.has_previous %}
-					    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number}}" aria-label="Previous"><span aria-hidden="true">&laquo; Previous</span></a><li>
-					{% endif %}
-
-					{% if page_obj.has_next %}
-					    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">Next &raquo;</span></a></li>
-					{% endif %}
-				</ul>
-			</nav>
-
 		</div>
 	</div>
 </div>

@@ -135,7 +135,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-
 # Login and logout redirects
 
 LOGIN_REDIRECT_URL = 'admin_home'
