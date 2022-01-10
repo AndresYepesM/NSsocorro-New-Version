@@ -73,8 +73,17 @@
 
 <div class="container-fluid">
 	<br>
-
 	<div class="row justify-content-center">
+
+			<div class="col col-md-12">
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  <strong>Has been successfully added to the new member</strong>below it will show all the new members added.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			</div>
+
 		<div class="col col-md-12">
 			{% if object_list  %}
 				<div class="card-columns">
@@ -128,7 +137,7 @@
 							    		{% endif %}
 
 							    		{% if user.is_authenticated %}
-							    			<a href="{% url 'UpdateMember' pk=members.id%}" class="btn btn-info">Edit Member</a>
+							    			<a href="{% url 'UpdateMember' pk=members.id%}" class="btn btn-info">Edit Members</a>
 							    		{% endif %}
 							  		</div>
 							  	</div>	

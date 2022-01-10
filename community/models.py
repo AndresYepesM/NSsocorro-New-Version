@@ -14,3 +14,15 @@ class MembersProfile(models.Model):
 		verbose_name_plural = "Members Profile"
 	def __str__(self):
 		return str(self.name)
+
+
+class CommunityProfiles(models.Model):
+
+	name = models.CharField(max_length=60, verbose_name='name of the community')
+	bio = models.TextField()
+	photo = models.ImageField(upload_to='static/img/upload/community', blank=True)
+	class Meta:
+		ordering =["-id"]
+		verbose_name_plural = "Community Profiles"
+	def __str__(self):
+		return str(self.name)

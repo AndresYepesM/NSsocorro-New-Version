@@ -12,6 +12,7 @@ from django.views import generic
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import MembersProfile
+from .forms import *
 # Create your views here.
 
 
@@ -22,6 +23,37 @@ class MembersList(ListView):
 	template_name = 'community/Members/members_list.html'
 	paginate_by = 9
 
+
+class NewMember(CreateView):
+	model = MembersProfile
+	form_class = CreateMember
+	template_name = 'community/Members/members_form.html'
+	success_url = reverse_lazy('MembersDone')
+
+class UpdateMember(UpdateView):
+	model = MembersProfile
+	form_class = CreateMember
+	template_name = 'community/Members/members_form.html'
+	success_url = reverse_lazy('MembersDone')
+
+@login_required(login_url='/login')
+def MemberDelete(request, pk):
+
+	post = get_object_or_404(MembersProfile, id=pk)
+	post.delete()
+	return redirect('MembersDeleteDone')
+
+class MembersDone(ListView):
+	model = MembersProfile
+	template_name = 'community/Members/members_done.html'
+	paginate_by = 9
+
+class MembersDeleteDone(ListView):
+	model = MembersProfile
+	template_name = 'community/Members/members_delete_done.html'
+	paginate_by = 9
+
+	
 
 @login_required(login_url='/login/')
 # Search bar
